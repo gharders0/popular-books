@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const Book = require('../models/bookModel');
 //@desc get all popular books
 //@route GET /api/books
-//@access public
+//@access private
 const getBooks = asyncHandler(async (req, res) => {
   const books = await Book.find();
   res.status(200).json(books);
@@ -10,7 +10,7 @@ const getBooks = asyncHandler(async (req, res) => {
 
 //@desc get popular book based on id
 //@route GET /api/books/:id
-//@access public
+//@access private
 const getSingleBook = asyncHandler(async (req, res) => {
   const book = await Book.findById(req.params.id);
   if (!book) {
@@ -22,7 +22,7 @@ const getSingleBook = asyncHandler(async (req, res) => {
 
 //@desc create new popular books
 //@route POST /api/books
-//@access public
+//@access private
 const createBook = asyncHandler(async (req, res) => {
   const { name, author, yearPublished, genre } = req.body;
   if (!name || !author || !yearPublished || !genre) {
@@ -40,7 +40,7 @@ const createBook = asyncHandler(async (req, res) => {
 
 //@desc update popular book based on id
 //@route PUT /api/books/:id
-//@access public
+//@access private
 const updateBook = asyncHandler(async (req, res) => {
   const book = await Book.findById(req.params.id);
   if (!book) {
@@ -55,7 +55,7 @@ const updateBook = asyncHandler(async (req, res) => {
 
 //@desc delete popular book based on id
 //@route DELETE /api/books/:id
-//@access public
+//@access private
 const deleteBook = asyncHandler(async (req, res) => {
   const book = await Book.findById(req.params.id);
   if (!book) {

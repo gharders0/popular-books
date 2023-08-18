@@ -8,8 +8,8 @@ const {
   deleteBook,
 } = require('../controllers/bookController');
 
+router.use(validateToken);
 router.route('/').get(getBooks).post(createBook);
-
 router.route('/:id').get(getSingleBook).put(updateBook).delete(deleteBook);
 
 module.exports = router;
